@@ -45,15 +45,9 @@ public class Vehicule {
     private StatutVehicule statut;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_agence", nullable = false)
     private Agence agence;
 
     @ManyToMany
-    @JoinTable(
-            name = "vehicule_equipement",
-            joinColumns = @JoinColumn(name = "id_vehicule"),
-            inverseJoinColumns = @JoinColumn(name = "id_equipement")
-    )
     private Set<Equipement> equipements = new HashSet<>();
 
     @OneToMany(mappedBy = "vehicule")
